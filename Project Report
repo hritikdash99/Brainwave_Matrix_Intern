@@ -1,0 +1,96 @@
+## Fake News Detection Using Machine Learning (RandomForestClassifier & XGBoost)
+
+### **Project Overview**
+This project implements a **Fake News Detection System** that classifies news statements as either **True** or **Fake**. The system leverages two advanced machine learning classifiers: **RandomForestClassifier** and **XGBoost**, evaluated on a combined dataset comprising the LIAR dataset and additional true and fake news datasets.
+
+### **Key Features**
+- **Text Preprocessing:** 
+  - Lowercasing, punctuation removal, and cleaning unwanted characters from the text.
+  - Used **TF-IDF Vectorization** for feature extraction with a vocabulary size of 5000.
+  
+- **Datasets Used:**
+  - **LIAR Dataset**: Contains labeled political statements.
+  - **True.csv** and **Fake.csv**: Contains true and fake news articles.
+
+- **Classifiers Implemented:**
+  1. **RandomForestClassifier:** Ensemble-based decision tree classifier with 200 estimators.
+  2. **XGBoost:** Gradient boosting-based classifier for improved performance.
+
+- **Performance Metrics:**
+  - Accuracy
+  - Precision, Recall, F1-Score (per class and weighted averages)
+
+### **Implementation Details**
+- **Preprocessing Steps:**
+  - Merging datasets, cleaning text, and mapping labels (`True` -> 1, `Fake` -> 0).
+  - Splitting data into training (80%) and testing (20%) sets.
+
+- **Training and Evaluation:**
+  - **RandomForestClassifier** achieved an accuracy of **97.29%**.
+  - **XGBoost** achieved a superior accuracy of **99.24%**, with high precision, recall, and F1-scores across both classes.
+
+### **Results**
+#### RandomForestClassifier:
+- **Accuracy:** 97.29%
+- **Classification Report:**
+  ```
+              precision    recall  f1-score   support
+      weighted avg       0.97      0.97      0.97      9249
+  ```
+
+#### XGBoost:
+- **Accuracy:** 99.24%
+- **Classification Report:**
+  ```
+              precision    recall  f1-score   support
+
+          0.0       0.99      1.00      0.99      4844
+          1.0       1.00      0.99      0.99      4405
+
+      accuracy                           0.99      9249
+      macro avg       0.99      0.99      0.99      9249
+      weighted avg       0.99      0.99      0.99      9249
+  ```
+
+### **How It Works**
+1. **Input:** A news statement is provided by the user.
+2. **Preprocessing:** The input is cleaned and transformed into numerical vectors using the trained TF-IDF vectorizer.
+3. **Prediction:** The selected model (RandomForest or XGBoost) predicts whether the statement is **True** or **Fake**.
+
+### **Sample Predictions**
+- Input: *"The number of inmates since 2000 on death row dying of natural causes has now surpassed the number of inmates executed."*
+  - **RandomForestClassifier Prediction:** Fake News
+  - **XGBoost Prediction:** True News
+- Input: *"Donald Trump is President-elect"*
+  - **RandomForestClassifier Prediction:** Fake News
+  - **XGBoost Prediction:** Fake News
+
+### **Conclusion**
+Both models performed well, with **XGBoost** slightly outperforming **RandomForestClassifier** in terms of accuracy and robustness. This demonstrates the power of advanced ensemble methods for fake news detection.
+
+### **Future Enhancements**
+- Experiment with more feature extraction techniques (e.g., Word2Vec, BERT embeddings).
+- Implement deep learning models like LSTMs or Transformers for text classification.
+- Add a user interface for easier interaction with the model.
+
+### **Repository Contents**
+- `liar.csv`, `True.csv`, `Fake.csv`: Datasets used for training and testing.
+- `model.py`: Main script implementing data preprocessing, training, and evaluation.
+- `README.md`: Project overview and instructions.
+
+### **Requirements**
+- Python 3.9+
+- Libraries: `pandas`, `sklearn`, `xgboost`, `numpy`, `scipy`
+
+### **How to Run**
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the script:
+   ```bash
+   python model.py
+   ```
+
+---
