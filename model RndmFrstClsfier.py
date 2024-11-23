@@ -8,7 +8,7 @@ import string
 
 # Step 1: Load the Data
 liar_data = pd.read_csv(
-    "C:\\Users\\HRITIK DASH\\OneDrive\\Desktop\\fakenews\\liar.csv",
+    "liar.csv",
     header=None,
     names=[
         "ID",
@@ -28,8 +28,8 @@ liar_data = pd.read_csv(
     ],
 )
 
-true_data = pd.read_csv("C:\\Users\\HRITIK DASH\\OneDrive\\Desktop\\fakenews\\True.csv")
-fake_data = pd.read_csv("C:\\Users\\HRITIK DASH\\OneDrive\\Desktop\\fakenews\\Fake.csv")
+true_data = pd.read_csv("True.csv")
+fake_data = pd.read_csv("Fake.csv")
 
 # Step 2: Preprocess Data
 # Combine true and fake datasets with the liar dataset
